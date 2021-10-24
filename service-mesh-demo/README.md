@@ -23,4 +23,4 @@ The included Java projects and/or installation files are here:
 
 --- 
 
-## Use the GUIDE.md to guide you through the demo.
+## Use the <a href="https://github.com/HugoPfeffer/bookinfo-deploy/blob/main/service-mesh-demo/GUIDE.md">GUIDE.md</a> to guide you through the demo.
