@@ -24,7 +24,7 @@
 ```
 </br>
 
-### Alternativaly you can run them separatly:
+### Alternatively you can run them separately:
 
 - Create a namespace to hold all configurations for the Service Mesh.
 ```sh
@@ -65,7 +65,11 @@ oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}'
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
+<br>
+
 # Monitoring
+
+<br>
 
 ### Show `Kiali` dashboard
 ```sh 
@@ -76,6 +80,8 @@ oc get routes -n istion-system | grep kiali
 - Show traffic being routed through the mesh using ROUND-ROBIN
 - Show the monitoring capabilities on the graph
 
+<br>
+
 ### Show `Jaeger` dashboard
 ```sh 
 oc get routes -n istion-system | grep jaeger
@@ -83,9 +89,15 @@ oc get routes -n istion-system | grep jaeger
 
 - Show time for each request to demonstrate the tracing capabilities of our tool.
 
+<br>
+
 # Customizations
 
+<br>
+
 ## **ROUND ROBIN to RANDOM**
+
+<br>
 
 ### Change the routing rule from `ROUND ROBIN` to `RANDOM` by removing the commented lines on `./service-mesh-demo/istio/destination-rule-all.yaml`
 
@@ -97,7 +109,12 @@ oc apply -f destination-rule-all.yaml
 ```
 - Show that the request are now being routed randomly
 
+<br>
+
 ## **AB testing**
+
+<br>
+
 
 ### Apply the `DestinationRule` for Firefox AB testing:
 ```sh 
@@ -111,6 +128,9 @@ oc apply -f virtualservices/ab-jason.yaml
 ```
 - Log in with the user **Jason** | jason:admin
 - Show that you're now being routed through a specific version
+
+<br>
+
 
 
 ## **Deployments** 
@@ -148,7 +168,12 @@ oc apply -f virtualservices/fail-jason.yaml
 ```
 - Refresh the page while logged with the user Jason
 
+<br>
+
+
 ## **Route to a single version**
+
+<br>
 
 ### Apply the `DestinationRule` for the routing to a single version:
 ```sh 
@@ -156,7 +181,15 @@ oc apply -f virtualservices/virtual-service-all-v1.yaml
 ```
 - Refresh the page
 
+# Tracing faulty apps with **Jaeger**
 
+<br>
+
+### Open **Jaeger** dashboard
+```sh 
+oc get routes -n istio-system | grep jaeger
+```
+- Show the faulty and delayed apps on the dashboard
 
 
 
