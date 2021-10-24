@@ -17,15 +17,18 @@
 </p>
 
 # Deploy Bookinfo app
-### Run the `deploy-service-mesh.sh` to deploy the entire workload
-
+## Run the `deploy-service-mesh.sh` to deploy the entire workload
 ```sh
 ./deploy-service-mesh.sh
 ```
 </br>
 
-### Alternatively you can run them separately:
+## Alternatively you can run them separately:
 
+- Change to the correct directory:
+```sh 
+cd deploy-bookinfo-app/
+```
 - Create a namespace to hold all configurations for the Service Mesh.
 ```sh
 oc new-project istio-system
@@ -34,32 +37,26 @@ oc new-project istio-system
 ```sh
 oc create -n istio-system -f ./istio-install/istio-installation.yaml
 ```
-
 - Create a new namespace to hold the bbookinfo application.
 ```sh
 oc new-project bookinfo
 ```
-
 - Create the Servce Mesh Member Roll.
 ```sh
 oc create -n istio-system -f ./istio-install/servicemeshmemberroll-default.yaml
 ```
-
 - Deploy the bookinfo application.
 ```sh
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
-
 - Create the bookinfo gateway.
 ```sh
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/bookinfo-gateway.yaml
 ```
-
 - Use this command to get the url for your application.
 ```sh
 oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}'
 ```
-
 - Lastly add the proper destination rules for your application.
 ```sh
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all.yaml
@@ -73,7 +70,7 @@ oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-
 
 ### Show `Kiali` dashboard
 ```sh 
-oc get routes -n istion-system | grep kiali 
+oc get routes -n istio-system | grep kiali 
 ```
 
 - Refresh page to generate traffic
@@ -84,7 +81,7 @@ oc get routes -n istion-system | grep kiali
 
 ### Show `Jaeger` dashboard
 ```sh 
-oc get routes -n istion-system | grep jaeger
+oc get routes -n istio-system | grep jaeger
 ```
 
 - Show time for each request to demonstrate the tracing capabilities of our tool.
@@ -94,6 +91,11 @@ oc get routes -n istion-system | grep jaeger
 # Customizations
 
 <br>
+
+## Change to correct directory:
+```sh 
+cd ../service-mesh-demo/istio
+```
 
 ## **ROUND ROBIN to RANDOM**
 
