@@ -84,3 +84,81 @@ oc get routes -n istion-system | grep jaeger
 - Show time for each request to demonstrate the tracing capabilities of our tool.
 
 # Customizations
+
+## **ROUND ROBIN to RANDOM**
+
+### Change the routing rule from `ROUND ROBIN` to `RANDOM` by removing the commented lines on `./service-mesh-demo/istio/destination-rule-all.yaml`
+
+<br>
+
+### Apply the changes:
+```sh 
+oc apply -f destination-rule-all.yaml 
+```
+- Show that the request are now being routed randomly
+
+## **AB testing**
+
+### Apply the `DestinationRule` for Firefox AB testing:
+```sh 
+oc apply -f virtualservices/ab-firefox.yaml 
+```
+- Access the application using Firefox
+
+### Apply the `DestinationRule` for the user 'Jason' AB testing:
+```sh 
+oc apply -f virtualservices/ab-jason.yaml 
+```
+- Log in with the user **Jason** | jason:admin
+- Show that you're now being routed through a specific version
+
+
+## **Deployments** 
+
+<br>
+
+### Apply the `DestinationRule` for the Blue-Green deployment:
+```sh 
+oc apply -f virtualservices/bluegreen.yaml 
+```
+- Refresh the page to show the changes
+
+### Apply the `DestinationRule` for the Canary deployment:
+```sh 
+oc apply -f virtualservices/canary.yaml 
+```
+- Refresh the page to show the changes
+
+<br>
+
+## **Inject failure**
+
+<br>
+
+### Apply the `DestinationRule` for the injected delay to show a failing app:
+```sh 
+oc apply -f virtualservices/delay-jason.yaml 
+```
+- Refresh the page while logged with the user Jason
+
+
+### Apply the `DestinationRule` for the injected error to show a faulty app:
+```sh 
+oc apply -f virtualservices/fail-jason.yaml 
+```
+- Refresh the page while logged with the user Jason
+
+## **Route to a single version**
+
+### Apply the `DestinationRule` for the routing to a single version:
+```sh 
+oc apply -f virtualservices/virtual-service-all-v1.yaml 
+```
+- Refresh the page
+
+
+
+
+
+
+
