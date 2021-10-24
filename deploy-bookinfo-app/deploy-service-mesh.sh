@@ -15,7 +15,7 @@ sleep 10
 
 oc create -n istio-system -f ./istio-install/servicemeshmemberroll-default.yaml
 
-sleep 60
+sleep 80
 
 oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/platform/kube/bookinfo.yaml
 
