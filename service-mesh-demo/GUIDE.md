@@ -9,7 +9,7 @@
 <h2 align="center">
     Document made to guide Solution Architects during the presentation of Service Mesh using OpenShift 4.x
 </h2>
-
+<h3 align="center"><i> Based on <bold>Gustavo Gianini's</bold> <a href="https://github.com/ggianini/openshift-servicemesh-demo">demo</a></i></h3>
 <p align="center">
     <!-- <img alt="CentOS Version" src="https://img.shields.io/badge/Linux-CentOS8-green"> -->
     <img alt="Made By" src="https://img.shields.io/badge/Made%20By-Hugo%20Pfeffer-blue?style=for-the-badge">
