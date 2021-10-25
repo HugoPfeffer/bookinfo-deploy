@@ -23,12 +23,16 @@ The included Java projects and/or installation files are here:
 * Catalog - Spring Boot project
 * Inventory - Quarkus project 
 * Istio - Servie Mesh configuration
+  * <a href="https://github.com/HugoPfeffer/bookinfo-deploy/tree/main/service-mesh-demo#deploy-bookinfo-app">Deploying Bookinfo app</a>
+  * <a href="https://github.com/HugoPfeffer/bookinfo-deploy/tree/main/service-mesh-demo#monitoring">Monitoring</a>
+  * <a href="https://github.com/HugoPfeffer/bookinfo-deploy/tree/main/service-mesh-demo#customizations">Customizations</a>
+  * <a href="https://github.com/HugoPfeffer/bookinfo-deploy/tree/main/service-mesh-demo#tracing-faulty-apps-with-jaeger">Tracing faulty apps with Jaeger</a>
 
  
 
 <br>
 
-# Deploy Bookinfo app
+# #1 Deploy Bookinfo app
 ## Run the `deploy-service-mesh.sh` to deploy the entire workload
 ```sh
 ./deploy-service-mesh.sh
@@ -76,7 +80,7 @@ oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-
 
 <br>
 
-# Monitoring
+# #2 Monitoring
 
 <br>
 
@@ -100,7 +104,7 @@ oc get routes -n istio-system | grep jaeger
 
 <br>
 
-# Customizations
+# #3 Customizations
 
 <br>
 
@@ -195,7 +199,9 @@ oc apply -f virtualservices/virtual-service-all-v1.yaml
 ```
 - Refresh the page
 
-# Tracing faulty apps with **Jaeger**
+<br>
+
+# #4 Tracing faulty apps with **Jaeger**
 
 <br>
 
